@@ -17,3 +17,8 @@ a server is often referred to as a node.
 * Real Time Alerts (Contracts and users)
 * Build Index- change DB state based on on-chain events
 * Send Transactions
+
+## What is Web3?
+Web3 is the decentralized web. It's marked by decentralized apps (DApps), decentralized finance (DeFi) like cryptocurrency, and blockchain technology. It's much stronger on personal privacy
+
+Web3, in the context of Ethereum, refers to decentralized apps that run on the blockchain. These are apps that allow anyone to participate without monetising their personal data.
