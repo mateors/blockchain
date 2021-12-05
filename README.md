@@ -8,6 +8,10 @@ As an RPC is the most straightforward API in which developers can communicate wi
 they are very similar to function calls, only that they occur between two separate systems. In blockchain terms, 
 a server is often referred to as a node.
 
+## What is DAPP?
+A decentralized app (also known as a dApp or dapp) operates on a blockchain or peer-to-peer network of computers.
+
+A decentralized application is a computer application that runs on a decentralized computing system. DApps have been popularized by distributed ledger technologies such as the Ethereum blockchain, where DApps are often referred to as smart contracts.
 
 ## What Does a DAPP Need?
 * Login user
