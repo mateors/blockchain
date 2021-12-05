@@ -27,6 +27,11 @@ users.then(usrs => {
 
 } ).catch(err=> console.log(err));
 
+const response = await fetch('https://jsonplaceholder.typicode.com/users');
+if (response.ok){
+    let response = await response.json()
+}
+
 // p.then( msg => console.log(msg)).catch( err => console.log(err))
 
 //single promise catch
