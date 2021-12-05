@@ -2,7 +2,7 @@
 
 let p = new Promise( (resolve,reject) => {
 
-    let result=5+6
+    let result=5+30
 
     if (result>33){
 
@@ -16,13 +16,16 @@ let p = new Promise( (resolve,reject) => {
 
 let users = fetch('https://jsonplaceholder.typicode.com/users').then( res => res.json() );
 
-// users.then(usrs => {
+users.then(usrs => {
     
-//     for (var i=0; i<usrs.length; i++){
-//         console.log(usrs[i]);
-//     }
+    // for (var i=0; i<usrs.length; i++){
+    //     console.log(usrs[i].id+'-'+usrs[i].name);
+    // }
+    usrs.forEach(element => {
+        console.log(element.id+'-'+element.phone);
+    });
 
-// } ).catch(err=> console.log(err));
+} ).catch(err=> console.log(err));
 
 // p.then( msg => console.log(msg)).catch( err => console.log(err))
 
@@ -39,8 +42,8 @@ let users = fetch('https://jsonplaceholder.typicode.com/users').then( res => res
 
 //multi promise catch
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
-Promise.allSettled([users,p]).then( values => 
-    {
-     console.log(values)
-    }
- ).catch( errs => console.log(errs) );
+// Promise.allSettled([users,p]).then( values => 
+//     {
+//      console.log(values)
+//     }
+//  ).catch( errs => console.log(errs) );
