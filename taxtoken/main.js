@@ -25,6 +25,7 @@ async function login() {
   // get stats on page load
   console.log("logged in user:",user.get("ethAddress"));
   getStats();
+  getClient();
 
 }
 
@@ -38,6 +39,8 @@ document.getElementById("btn-login").onclick = login;
 document.getElementById("btn-logout").onclick = logOut;
 
 document.getElementById("btn-get-stats").onclick = getStats;
+
+document.getElementById("btn-add").onclick = addClient;
 
 function getStats() {
   const user = Moralis.User.current();
@@ -88,4 +91,47 @@ function renderGasStats(data) {
       if (data.length==0){
         container.innerHTML=`<li> No record found. </li>`;
       }
+  }
+
+  async function getClient(){
+
+   const cln = new Moralis.Query("Client");
+   const results = await cln.find();
+
+   for (var i=0; i<results.length; i++){
+       const obj=results[i];
+       console.log(obj.id, "#", obj.get("name"),"-",obj.get("age"),"*", obj.createdAt);
+   }
+
+  }
+
+  async function addClient(){
+
+    const Client = Moralis.Object.extend("Client");
+    const client = new Client();
+
+    client.set("name", "Ariel Ferdman");
+    client.set("age", 37);
+    client.set("subscribed", true);
+
+    try{
+
+        const cln = await client.save();
+        console.log("client id#",cln);
+        console.log(cln.get("className"), cln.id,cln.className,"added");
+
+    }catch(err){
+        console.log("ERR",err);
+    }
+
+    // Client.save()
+    // .then((Client) => {
+    //     // Execute any logic that should take place after the object is saved.
+    //     alert('New object created with objectId: ' + Client.id);
+    // }, (error) => {
+    //     // Execute any logic that should take place if the save fails.
+    //     // error is a Moralis.Error with an error code and message.
+    //     alert('Failed to create new object, with error code: ' + error.message);
+    // });
+
   }
