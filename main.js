@@ -14,12 +14,33 @@ let p = new Promise( (resolve,reject) => {
 
 })
 
-p.then( (message) => {
+let users = fetch('https://jsonplaceholder.typicode.com/users').then( res => res.json() );
 
-     console.log(message);
+// users.then(usrs => {
+    
+//     for (var i=0; i<usrs.length; i++){
+//         console.log(usrs[i]);
+//     }
 
-}).catch( (err) => {
- 
-     console.log('ERR: '+err);
+// } ).catch(err=> console.log(err));
 
-});
+// p.then( msg => console.log(msg)).catch( err => console.log(err))
+
+//single promise catch
+// p.then( (message) => {
+
+//     console.log(message);
+
+// }).catch( (err) => {
+
+//     console.log('ERR: '+err);
+
+// });
+
+//multi promise catch
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+Promise.allSettled([users,p]).then( values => 
+    {
+     console.log(values)
+    }
+ ).catch( errs => console.log(errs) );
