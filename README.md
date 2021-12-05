@@ -26,3 +26,9 @@ A decentralized application is a computer application that runs on a decentraliz
 Web3 is the decentralized web. It's marked by decentralized apps (DApps), decentralized finance (DeFi) like cryptocurrency, and blockchain technology. It's much stronger on personal privacy
 
 Web3, in the context of Ethereum, refers to decentralized apps that run on the blockchain. These are apps that allow anyone to participate without monetising their personal data.
+
+## dApp Terms
+Each dApp has an on-chain part (smart contracts) and an off-chain part (server). The server is used in order to collect data from the blockchain and serve it to clients such as web and mobile apps.
+
+* on-chain part --> smart contracts
+* off-chain part --> server
