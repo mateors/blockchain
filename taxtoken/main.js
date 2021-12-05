@@ -51,7 +51,20 @@ async function getUserTransactions(user) {
   const query = new Moralis.Query("EthTransactions");
   query.equalTo("from_address", user.get("ethAddress"));
 
+  const subscription = await query.subscribe();
+  newTrxHandler(subscription);
+
   // run query
   const results = await query.find();
   console.log("user transactions:", results);
+}
+
+async function newTrxHandler(subscription){
+
+    subscription.on("create", function(data){
+
+         console.log("New trx:",data)
+
+    });
+
 }
