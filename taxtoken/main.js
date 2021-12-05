@@ -44,6 +44,7 @@ function getStats() {
   if (user) {
     getUserTransactions(user);
   }
+  getAverageGasPrices();
 }
 
 async function getUserTransactions(user) {
@@ -68,3 +69,23 @@ async function newTrxHandler(subscription){
     });
 
 }
+
+async function getAverageGasPrices() {
+    const results = await Moralis.Cloud.run("getAvgGass");
+    console.log("average user gas prices:", results);
+
+    renderGasStats(results);
+}
+
+function renderGasStats(data) {
+    const container = document.getElementById("gas-stats");
+    container.innerHTML = data
+      .map(function (row, rank) {
+        return `<li>#${rank + 1}: ${Math.round(row.avgGas)} gwei</li>`;
+      })
+      .join("");
+
+      if (data.length==0){
+        container.innerHTML=`<li> No record found. </li>`;
+      }
+  }
