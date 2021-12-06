@@ -4,6 +4,8 @@ const appId = "vOQwWdGZJbTlt9m9VFMijeSnTvZWTeLuS8a2T6Dd";
 
 Moralis.start({ serverUrl, appId });
 
+//Moralis.Plugins.fiat.buy();
+
 /* Authentication code */
 async function login() {
   let user = Moralis.User.current();
@@ -42,6 +44,8 @@ document.getElementById("btn-get-stats").onclick = getStats;
 
 document.getElementById("btn-add").onclick = addClient;
 
+document.getElementById("btn-buy").onclick = buyCrypto;
+
 function getStats() {
   const user = Moralis.User.current();
   if (user) {
@@ -74,7 +78,7 @@ async function newTrxHandler(subscription){
 }
 
 async function getAverageGasPrices() {
-    const results = await Moralis.Cloud.run("getAvgGass");
+    const results = await Moralis.Cloud.run("getAvgGas");
     console.log("average user gas prices:", results);
 
     renderGasStats(results);
@@ -135,3 +139,13 @@ function renderGasStats(data) {
     // });
 
   }
+
+
+ (async function(){
+   Moralis.initPlugins();
+ })();
+ 
+ function buyCrypto(){
+  console.log('buy crypto');
+  Moralis.Plugins.fiat.buy();
+ }
