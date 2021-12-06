@@ -18,7 +18,7 @@
 
     const serverUrl = "https://ynriprd0e4nd.usemoralis.com:2053/server";
     const appId = "vOQwWdGZJbTlt9m9VFMijeSnTvZWTeLuS8a2T6Dd";
-    Moralis.start({ serverUrl, appId });
+    //Moralis.start({ serverUrl, appId });
 
     //Moralis.initialize("vOQwWdGZJbTlt9m9VFMijeSnTvZWTeLuS8a2T6Dd");
     //Moralis.serverURL= "vOQwWdGZJbTlt9m9VFMijeSnTvZWTeLuS8a2T6Dd";
@@ -26,16 +26,25 @@
     //Moralis.initPlugins();
     //Moralis.Plugins.fiat.buy();
 
-    (async function(){
+    {{/* (async function(){
      Moralis.initPlugins();
-    })();
+    })(); */}}
     
-    function buyCrypto(){
+    {{/* function buyCrypto(){
      console.log('buy crypto');
      Moralis.Plugins.fiat.buy();
+    } */}}
+
+    async function buyCrypto() {
+            await Moralis.start({ serverUrl, appId });
+            Moralis.initPlugins();
+            await Moralis.Plugins.fiat.buy({ newTab: true });
     }
 
     async function iframefiat(){
+
+        await Moralis.start({ serverUrl, appId });
+        Moralis.initPlugins();
         let result = await Moralis.Plugins.fiat.buy(undefined, {disableTriggers: true});
         document.getElementById('myIframe').style.display='block';
         document.getElementById('myIframe').src= result.data;
