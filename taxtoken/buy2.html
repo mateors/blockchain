@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TaxToken</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+  </head>
+
+  <body>
+    <h1>Buy</h1>
+
+    <button onclick="buyCrypto()" id="btn-buy">Buy Crypto</button>
+
+    <script type="text/javascript">
+      //const serverUrl = 'https://psvgohe33tol.usemoralis.com:2053/server';
+      //const appId = 'FNRaaWWRzn2dp8ItQBvPhNlc4D4iLVP0ng17BXdR';
+    const serverUrl = "https://ynriprd0e4nd.usemoralis.com:2053/server";
+    const appId = "vOQwWdGZJbTlt9m9VFMijeSnTvZWTeLuS8a2T6Dd";
+
+      async function buyCrypto() {
+        await Moralis.start({ serverUrl, appId });
+        Moralis.initPlugins();
+        await Moralis.Plugins.fiat.buy({newTab: true});
+      }
+    </script>
+  </body>
+</html>
